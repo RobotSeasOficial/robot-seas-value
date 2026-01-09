@@ -180,7 +180,7 @@ function calculateTrade() {
   const wantValue = values[wItem] * wQty;
   const difference = offerValue - wantValue;
 
-  if (Math.abs(difference) <= 100000) {
+  if (Math.abs(difference) <= 20000) {
     result.textContent = '⚖️ TRADE JUSTA';
     result.className = 'result fair';
     diff.textContent = 'Diferença insignificante (±20k belly)';
