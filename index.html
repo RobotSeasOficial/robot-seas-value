@@ -3,122 +3,110 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Robot Seas | Calculadora de Trades</title>
+  <title>Robot Seas Trader | Calculadora de Trades</title>
+
+  <meta name="description" content="Robot Seas Trader é a calculadora oficial de trades do Robot Seas. Veja valores de frutas, permanentes e gamepasses e descubra se o trade é win, lose ou justo.">
+  <meta name="keywords" content="Robot Seas Trader, Robot Seas, trade Robot Seas, calculadora Robot Seas, Roblox Robot Seas">
+  <meta name="author" content="Robot Seas Trader">
+
   <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0b0f1a;
-  color: #e5e7eb;
-}
-
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-}
-
-h1 { text-align: center; color: #38bdf8; }
-
-.card {
-  background: #111827;
-  border-radius: 14px;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-h2 { color: #facc15; }
-
-select, input {
-  width: 100%;
-  padding: 12px;
-  margin-top: 8px;
-  margin-bottom: 12px;
-  border-radius: 10px;
-  border: 1px solid #1f2937;
-  background: #020617;
-  color: #fff;
-  font-size: 16px;
-}
-
-select {
-  appearance: auto;
-  -webkit-appearance: auto;
-}
-
-button {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 12px;
-  background: #38bdf8;
-  color: #020617;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.tabs { display: flex; gap: 10px; margin-bottom: 15px; }
-
-.priceTab {
-  opacity: 0;
-  transform: translateX(20px);
-  transition: opacity .3s ease, transform .3s ease;
-  display: none;
-}
-
-.priceTab.active {
-  display: block;
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.priceTab p {
-  margin: 6px 0;
-  padding: 6px;
-  border-bottom: 1px solid #1f2937;
-}
-
-.result { text-align: center; font-weight: bold; margin-top: 10px; }
-.win { color: #22c55e; }
-.lose { color: #ef4444; }
-.fair { color: #facc15; }
-</style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0f1a;
+      color: #e5e7eb;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #38bdf8;
+    }
+    .card {
+      background: #111827;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.45);
+    }
+    h2 { color: #facc15; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border-bottom: 1px solid #1f2933;
+    }
+    th { color: #38bdf8; }
+    select, input {
+      background: #020617;
+      color: #e5e7eb;
+      border: 1px solid #1f2937;
+      border-radius: 10px;
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+      margin-bottom: 10px;
+      appearance: auto;
+      -webkit-appearance: auto;
+      pointer-events: auto;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(90deg,#38bdf8,#0ea5e9);
+      color: #020617;
+      font-size: 17px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .result { margin-top: 12px; text-align: center; font-size: 18px; font-weight: bold; }
+    .ok { color: #22c55e; }
+    .under { color: #ef4444; }
+    .fair { color: #facc15; }
+    .priceTab p { margin:6px 0; padding:6px; border-bottom:1px solid #1f2937; }
+  </style>
 </head>
+
 <body>
 <div class="container">
   <h1>⚙️ Robot Seas — Calculadora Oficial de Trades</h1>
   <p style="text-align:center;opacity:.8">Frutas • Permanentes • Gamepasses</p>
 
   <div class="card">
-  <h2>💰 Valores Oficiais</h2>
+    <h2>💰 Valores Oficiais</h2>
 
-  <div class="tabs">
-    <button onclick="showTab('frutas')">🍎 Frutas</button>
-    <button onclick="showTab('perm')">⭐ Perm</button>
-    <button onclick="showTab('gamepass')">🎮 Gamepass</button>
-  </div>
+    <div style="display:flex;gap:10px;margin-bottom:15px;">
+      <button onclick="showTab('frutas')">🍎 Frutas</button>
+      <button onclick="showTab('perm')">⭐ Perm</button>
+      <button onclick="showTab('gamepass')">🎮 Gamepass</button>
+    </div>
 
-  <div id="frutas" class="priceTab active">
-    <p>Flame — 250.000</p>
-    <p>Light — 1.200.000</p>
-    <p>Earth — 9.000.000</p>
-    <p>Time — 18.000.000</p>
-  </div>
+    <div id="frutas" class="priceTab">
+      <p>Flame — 250.000</p>
+      <p>Light — 1.200.000</p>
+      <p>Earth — 9.000.000</p>
+      <p>Time — 18.000.000</p>
+    </div>
 
-  <div id="perm" class="priceTab">
-    <p>Flame (Perm) — 10.000.000</p>
-    <p>Light (Perm) — 14.000.000</p>
-    <p>Earth (Perm) — 45.000.000</p>
-    <p>Time (Perm) — 56.000.000</p>
-  </div>
+    <div id="perm" class="priceTab" style="display:none">
+      <p>Flame (Perm) — 10.000.000</p>
+      <p>Light (Perm) — 14.000.000</p>
+      <p>Earth (Perm) — 46.000.000</p>
+      <p>Time (Perm) — 58.000.000</p>
+    </div>
 
-  <div id="gamepass" class="priceTab">
-    <p>2x Maestria — 2.500.000</p>
-    <p>2x Money — 2.500.000</p>
-    <p>Tecnologic Blade — 4.000.000</p>
-    <p>VIP — 9.000.000</p>
+    <div id="gamepass" class="priceTab" style="display:none">
+      <p>2x Money — 2.500.000</p>
+      <p>2x Maestria — 2.500.000</p>
+      <p>Tecnologic Blade — 4.000.000</p>
+      <p>VIP — 9.000.000</p>
+    </div>
   </div>
-</div>
 
   <div class="card">
     <h2>🔄 Calculadora de Trade</h2>
@@ -140,242 +128,6 @@ button {
 </div>
 
 <script>
-function showTab(tab) {
-  document.querySelectorAll('.priceTab').forEach(el => el.classList.remove('active'));
-  document.getElementById(tab).classList.add('active');
-}
-
-function showTab(tab){
-  document.getElementById('frutas').style.display='none';
-  document.getElementById('perm').style.display='none';
-  document.getElementById('gamepass').style.display='none';
-  document.getElementById(tab).style.display='block';
-}
-
-const values = {
-  'Flame': 250000,
-  'Light': 750000,
-  'Earth': 3000000,
-  'Time': 9000000,
-  'Flame (Perm)': 10000000,
-  'Light (Perm)': 14000000,
-  'Earth (Perm)': 22000000,
-  'Time (Perm)': 35000000,
-  '2x Maestria': 2500000,
-  '2x Money': 2500000,
-  'Tecnologic Blade': 5500000,
-  'VIP': 9000000
-};
-
-const offerItem = document.getElementById('offerItem');
-const wantItem = document.getElementById('wantItem');
-
-Object.keys(values).forEach(item => {
-  offerItem.innerHTML += `<option value="${item}">${item}</option>`;
-  wantItem.innerHTML += `<option value="${item}">${item}</option>`;
-});
-
-function calculateTrade() {
-  const oItem = offerItem.value;
-  const wItem = wantItem.value;
-  const oQty = Number(document.getElementById('offerQty').value);
-  const wQty = Number(document.getElementById('wantQty').value);
-
-  const result = document.getElementById('result');
-  const diff = document.getElementById('diff');
-  const adds = document.getElementById('adds');
-
-  if (!oQty || !wQty) {
-    result.textContent = 'Preencha tudo corretamente.';
-    result.className = 'result under';
-    diff.textContent = '';
-    adds.textContent = '';
-    return;
-  }
-
-  const offerValue = values[oItem] * oQty;
-  const wantValue = values[wItem] * wQty;
-  const difference = offerValue - wantValue;
-
-  if (Math.abs(difference) <= 20000) {
-    result.textContent = '⚖️ TRADE JUSTA';
-    result.className = 'result fair';
-    diff.textContent = 'Diferença insignificante (±20k belly)';
-    adds.textContent = 'Nenhum add necessário.';
-    return;
-  }
-
-  if (difference < 0) {
-    result.textContent = '✅ WIN — Você está ganhando';
-    result.className = 'result ok';
-    diff.textContent = `💰 Ganhando ${Math.abs(difference).toLocaleString()} belly`;
-  } else {
-    result.textContent = '❌ LOSE — Você está perdendo';
-    result.className = 'result under';
-    diff.textContent = `💸 Perdendo ${difference.toLocaleString()} belly`;
-  }
-
-  const needed = Math.abs(difference);
-  const possibleAdds = Object.entries(values)
-    .filter(([_, v]) => v <= needed)
-    .sort((a,b) => b[1]-a[1]);
-
-  if (possibleAdds.length) {
-    adds.textContent = 'Adds sugeridos: ' + possibleAdds.slice(0,2).map(i => i[0]).join(' + ');
-  } else {
-    adds.textContent = 'Adds: nenhum item resolve essa diferença.';
-  }
-}
-</script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Robot Seas | Calculadora de Trades</title>
-  <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0b0f1a;
-  color: #e5e7eb;
-}
-
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-}
-
-h1 { text-align: center; color: #38bdf8; }
-
-.card {
-  background: #111827;
-  border-radius: 14px;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-h2 { color: #facc15; }
-
-select, input {
-  width: 100%;
-  padding: 12px;
-  margin-top: 8px;
-  margin-bottom: 12px;
-  border-radius: 10px;
-  border: 1px solid #1f2937;
-  background: #020617;
-  color: #fff;
-  font-size: 16px;
-}
-
-select {
-  appearance: auto;
-  -webkit-appearance: auto;
-}
-
-button {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 12px;
-  background: #38bdf8;
-  color: #020617;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.tabs { display: flex; gap: 10px; margin-bottom: 15px; }
-
-.priceTab {
-  opacity: 0;
-  transform: translateX(20px);
-  transition: opacity .3s ease, transform .3s ease;
-  display: none;
-}
-
-.priceTab.active {
-  display: block;
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.priceTab p {
-  margin: 6px 0;
-  padding: 6px;
-  border-bottom: 1px solid #1f2937;
-}
-
-.result { text-align: center; font-weight: bold; margin-top: 10px; }
-.win { color: #22c55e; }
-.lose { color: #ef4444; }
-.fair { color: #facc15; }
-</style>
-</head>
-<body>
-<div class="container">
-  <h1>⚙️ Robot Seas — Calculadora Oficial de Trades</h1>
-  <p style="text-align:center;opacity:.8">Frutas • Permanentes • Gamepasses</p>
-
-  <div class="card">
-  <h2>💰 Valores Oficiais</h2>
-
-  <div class="tabs">
-    <button onclick="showTab('frutas')">🍎 Frutas</button>
-    <button onclick="showTab('perm')">⭐ Perm</button>
-    <button onclick="showTab('gamepass')">🎮 Gamepass</button>
-  </div>
-
-  <div id="frutas" class="priceTab active">
-    <p>Flame — 250.000</p>
-    <p>Light — 1.250.000</p>
-    <p>Earth — 9.000.000</p>
-    <p>Time — 18.000.000</p>
-  </div>
-
-  <div id="perm" class="priceTab">
-    <p>Flame (Perm) — 10.000.000</p>
-    <p>Light (Perm) — 14.000.000</p>
-    <p>Earth (Perm) — 45.000.000</p>
-    <p>Time (Perm) — 56.000.000</p>
-  </div>
-
-  <div id="gamepass" class="priceTab">
-    <p>2x Maestria — 2.500.000</p>
-    <p>2x Money — 2.500.000</p>
-    <p>Tecnologic Blade — 4.000.000</p>
-    <p>VIP — 9.000.000</p>
-  </div>
-</div>
-
-  <div class="card">
-    <h2>🔄 Calculadora de Trade</h2>
-
-    <h3>Você oferece</h3>
-    <select id="offerItem"></select>
-    <input type="number" id="offerQty" placeholder="Quantidade" min="1" />
-
-    <h3>Você quer</h3>
-    <select id="wantItem"></select>
-    <input type="number" id="wantQty" placeholder="Quantidade" min="1" />
-
-    <button onclick="calculateTrade()">Calcular Trade</button>
-
-    <div class="result" id="result"></div>
-    <div class="result" id="diff"></div>
-    <div class="result" id="adds"></div>
-  </div>
-</div>
-
-<script>
-function showTab(tab) {
-  document.querySelectorAll('.priceTab').forEach(el => el.classList.remove('active'));
-  document.getElementById(tab).classList.add('active');
-}
-
 function showTab(tab){
   document.getElementById('frutas').style.display='none';
   document.getElementById('perm').style.display='none';
@@ -390,10 +142,10 @@ const values = {
   'Time': 18000000,
   'Flame (Perm)': 10000000,
   'Light (Perm)': 14000000,
-  'Earth (Perm)': 4500000,
+  'Earth (Perm)': 46000000,
   'Time (Perm)': 58000000,
-  '2x Maestria': 2500000,
   '2x Money': 2500000,
+  '2x Maestria': 2500000,
   'Tecnologic Blade': 4000000,
   'VIP': 9000000
 };
@@ -428,7 +180,7 @@ function calculateTrade() {
   const wantValue = values[wItem] * wQty;
   const difference = offerValue - wantValue;
 
-  if (Math.abs(difference) <= 20000) {
+  if (Math.abs(difference) <= 100000) {
     result.textContent = '⚖️ TRADE JUSTA';
     result.className = 'result fair';
     diff.textContent = 'Diferença insignificante (±20k belly)';
